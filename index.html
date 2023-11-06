@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ma Boutique en Ligne</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <meta charset="utf-8" />
+  <title>Accept a payment</title>
+  <meta name="description" content="A demo of a payment on Stripe" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="checkout.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="checkout.js" defer></script>
+
+  <title>Paiement en ligne</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    /* Styles pour le formulaire de paiement */
+    .payment-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .payment-form input {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+  
+    .payment-form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  
+    .payment-form button:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Willy Store Ma Boutique en Ligne</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Produits</a></li>
+        <li><a href="#">Panier</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="produits">
+      <h2>Nos Produits</h2>
+      <div class="produit">
+        <img src="produit1.jpg" alt="Produit 1">
+        <h3>Casque Bluetooth</h3>
+        <p>Prix: $63.31</p>
+        <button class="ajouter-panier" data-produit-id="1" data-prix="10">Ajouter au Panier</button>
+      </div>
+      <div class="produit">
+        <img src="produit2.jpg" alt="Produit 2">
+        <h3>Carte developement LCD TFT,16 mo</h3>
+        <p>Prix: $30.21</p>
+        <button class="ajouter-panier" data-produit-id="2" data-prix="30.21">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+      <img src="produit3.jpg" alt="Produit 3">
+        <h3>Flipper-zero</h3>
+        <p>Prix: $100.21</p>
+        <button class="ajouter-panier" data-produit-id="3" data-prix="100.21">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+      <img src="produit4.jpg" alt="Produit 4">
+        <h3>Carte mère 64 GO</h3>
+        <p>Prix: $10.31</p>
+        <button class="ajouter-panier" data-produit-id="4" data-prix="10.31">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+      <img src="produit5.jpg" alt="Produit 5">
+        <h3>ATTINY-micro carte de developement</h3>
+        <p>Prix: $10.31</p>
+        <button class="ajouter-panier" data-produit-id="5" data-prix="10.31">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+      <img src="produit6.jpg" alt="Produit 6">
+        <h3>Samsung GALAXY Tab Dock Lite</h3>
+        <p>Prix: $99.58</p>
+        <button class="ajouter-panier" data-produit-id="6" data-prix="99.58">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+        <img src="produit7.jpg" alt="Produit 7">
+        <h3>Apple Watch Series 8 GPS</h3>
+        <p>Prix: $155.11</p>
+        <button class="ajouter-panier" data-produit-id="7" data-prix="155.11">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+        <img src="produit8.jpg" alt="Produit 8">
+        <h3>Tablette Tactile Samsung GALAXY Tab A7</h3>
+        <p>Prix: $120.14</p>
+        <button class="ajouter-panier" data-produit-id="8" data-prix="120.14">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+        <img src="produit9.jpg" alt="Produit 9">
+        <h3>Ecran Gaming VX2718-PC-MHD-Classs</h3>
+        <p>Prix: $110.31</p>
+        <button class="ajouter-panier" data-produit-id="9" data-prix="110.31">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+       <img src="produit1.jpg" alt="Produit 1">
+        <h3>Ordinateur HP</h3>
+        <p>Prix: $119.00</p>
+        <button class="ajouter-panier" data-produit-id="1" data-prix="10">Ajouter au Panier</button>
+      </div>
+
+
+      <div class="produit">
+      <img src="produit10.jpg" alt="Produit 10">
+        <h3>Ordinateur Thomson</h3>
+        <p>Prix: $132.88</p>
+        <button class="ajouter-panier" data-produit-id="10" data-prix="132.88">Ajouter au Panier</button>
+        </div>
+
+        <div class="produit">
+          <img src="produit11.jpg" alt="Produit 11">
+          <h3>Iphone 6s</h3>
+          <p>Prix: $80.43</p>
+          <button class="ajouter-panier" data-produit-id="11" data-prix="80.43">Ajouter au Panier</button>
+        </div>
+
+        <div class="produit">
+          <img src="produit12.jpg" alt="Produit 12">
+          <h3>Iphone 13 Mini</h3>
+          <p>Prix: $90.71</p>
+          <button class="ajouter-panier" data-produit-id="12" data-prix="90.71">Ajouter au Panier</button>
+        </div>
+
+
+      <div class="produit">
+        <img src="produit13.jpg" alt="Produit 13">
+        <h3>AirTag Wireless</h3>
+        <p>Prix: $20.43</p>
+        <button class="ajouter-panier" data-produit-id="13" data-prix="20.43">Ajouter au Panier</button>
+      </div>
+
+
+
+      <!-- Ajoutez ici les autres produits -->
+      </section>
+      
+      <section id="panier">
+        <h2>Panier</h2>
+        <div id="liste-produits"></div>
+        <p>Total: $<span id="total"></span></p>
+
+        <h0>Service rapide et sécurisé,livraison inclus.</h0>
+        <button onclick="passerCommande()"> Annuler ?</button>
+      </section>
+      </main>
+
+    
+      <!-- Display a payment form -->
+      <form id="payment-form">
+        <div id="link-authentication-element">
+          <!--Stripe.js injects the Link Authentication Element-->
+        </div>
+        <div id="payment-element">
+          <!--Stripe.js injects the Payment Element-->
+        </div>
+        <div class="payment-form">
+          <h1>Paiement en ligne</h1>
+          <label for="card-element">Informations de carte de crédit :</label>
+        <div id="card-element"></div>
+          <div id="card-errors" role="alert"></div>
+        <button id="submit">Payer</button>
+        <button id="submit">
+          <div class="spinner hidden" id="spinner"></div>
+          <span id="button-text">Retour</span>
+        </button>
+        <div id="payment-message" class="hidden"></div>
+      <script>
+        // Configurez votre clé d'API Stripe
+        const stripe = Stripe('pk_live_51NID2BAGHCS2IVlyKTnlpEsDpVM20wph80XFEG24VnSlh2JSp1OqHFlutrBHiPxcoOIhYAQdoklbBMRQws3cRC3U00tsrEOTxW');
+
+        // Créez un élément de carte
+        const elements = stripe.elements();
+        const cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        // Gestionnaire d'événements pour soumettre le formulaire de paiement
+        const form = document.querySelector('.payment-form');
+        const errorElement = document.getElementById('card-errors');
+        const submitButton = document.getElementById('submit');
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          // Désactivez le bouton de paiement pour éviter les clics multiples
+          submitButton.disabled = true;
+
+          // Créez le token de paiement avec l'élément de carte
+          const { token, error } = await stripe.createToken(cardElement);
+
+          // Traitez les erreurs de création du token
+          if (error) {
+            errorElement.textContent = error.message;
+            submitButton.disabled = false;
+          } else {
+            // Envoyez le token à votre serveur pour effectuer le paiement
+            // Remplacez l'URL par l'endpoint de votre serveur qui gère le paiement
+            const response = await fetch('/process-payment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ token: token.id }),
+            });
+
+            // Traitez la réponse du serveur
+            if (response.ok) {
+              // Paiement réussi
+              form.reset();
+              errorElement.textContent = '';
+              alert('Paiement effectué avec succès !');
+            } else {
+              // Erreur de paiement
+              const errorData = await response.json();
+              errorElement.textContent = errorData.error;
+              submitButton.disabled = false;
+            }
+          }
+        });
+      </script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var boutonsAjouterPanier = document.getElementsByClassName('ajouter-panier');
+    var listeProduits = document.getElementById('liste-produits');
+    var total = document.getElementById('total');
+    var boutonPaiement = document.getElementById('bouton-paiement');
+
+    var panier = [];
+
+    for (var i = 0; i < boutonsAjouterPanier.length; i++) {
+      boutonsAjouterPanier[i].addEventListener('click', function () {
+        var produitId = this.getAttribute('data-produit-id');
+        var prix = parseFloat(this.getAttribute('data-prix'));
+
+        var produit = {
+          id: produitId,
+          prix: prix
+        };
+
+        panier.push(produit);
+        afficherProduits();
+        calculerTotal();
+      });
+    }
+
+    function afficherProduits() {
+      listeProduits.innerHTML = '';
+
+      for (var i = 0; i < panier.length; i++) {
+        var produit = panier[i];
+
+        var elementProduit = document.createElement('div');
+        elementProduit.textContent = 'Produit ' + produit.id + ' - Prix: $' + produit.prix.toFixed(2);
+
+        listeProduits.appendChild(elementProduit);
+      }
+    }
+
+    function calculerTotal() {
+      var totalPrix = 0;
+
+      for (var i = 0; i < panier.length; i++) {
+        totalPrix += panier[i].prix;
+      }
+
+      total.textContent = totalPrix.toFixed(2);
+    }
+
+    boutonPaiement.addEventListener('click', function () {
+      if (panier.length > 0) {
+        // Effectuer le traitement de paiement ici
+
+        // Réinitialiser le panier
+        panier = [];
+        afficherProduits();
+        calculerTotal();
+
+        alert('Paiement effectué avec succès !');
+      } else {
+        alert('Le panier est vide. Ajoutez des produits avant de procéder au paiement.');
+      }
+    });
+  });
+  <footer>
+    <p>&copy; 2023 Ma Boutique en Ligne. Tous droits réservés.</p>
+  </footer>
+</script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout canceled</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <p>Forgot to add something to your cart? Shop around then come back to pay!</p>
+  </section>
+</body>
+</html>

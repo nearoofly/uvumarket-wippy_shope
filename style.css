@@ -1,0 +1,67 @@
+/* Styles pour la barre de navigation */
+header {
+  background-color: #ff995e;
+  padding: 10px;
+  color: #fff;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Styles pour la section des produits */
+#produits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.produit {
+  text-align: center;
+}
+
+.produit img {
+  width: 200px;
+  height: 200px;
+}
+
+/* Styles pour la section du panier */
+#panier {
+  padding: 20px;
+}
+
+#liste-produits {
+  margin-bottom: 10px;
+}
+
+#total {
+  font-weight: bold;
+}
+
+/* Styles pour le bouton de paiement */
+#bouton-paiement {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#bouton-paiement:hover {
+  background-color: #45a049;
+}
